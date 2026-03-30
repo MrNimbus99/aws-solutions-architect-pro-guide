@@ -3,80 +3,645 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="AWS Solutions Architect Professional (SAP-C02) complete study guide. Design complex, enterprise-scale AWS architectures with advanced patterns and best practices. Pass with NestedCerts.">
-<title>AWS Solutions Architect Professional Guide | SAP-C02 Exam Prep 2026</title>
-<link rel="preconnect" href="https://nestedcerts.com">
+<meta name="description" content="AWS Certified Solutions Architect – Professional (SAP-C02) study guide with 30 free sample practice questions and detailed explanations. Prepare for your AWS exam with NestedCerts.">
+<title>AWS Solutions Architect Professional Study Guide | SAP-C02 Free Practice Questions 2026</title>
+<link rel="canonical" href="https://mrnimbus99.github.io/aws-solutions-architect-pro-guide/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <style>* { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif; background: linear-gradient(135deg, #0a0e1a 0%, #1a1f35 100%); color: #e8edf9; line-height: 1.7; }
 .container { max-width: 1100px; margin: 0 auto; padding: 60px 24px; }
-.hero { text-align: center; margin-bottom: 80px; animation: fadeInUp 0.8s ease; }
+.hero { text-align: center; margin-bottom: 60px; animation: fadeInUp 0.8s ease; }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 .badge { display: inline-block; padding: 8px 16px; background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 100px; font-size: 0.85rem; font-weight: 600; color: #60a5fa; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.05em; }
-h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 24px; background: linear-gradient(135deg, #60a5fa, #06b6d4, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -0.02em; }
-.lead { font-size: 1.25rem; color: #9ba3b8; max-width: 700px; margin: 0 auto 32px; line-height: 1.8; }
-.cta { display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; background: linear-gradient(135deg, #3b82f6, #60a5fa); color: white; border-radius: 12px; font-weight: 700; text-decoration: none; margin: 16px 8px; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3); border: none; }
+h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 24px; background: linear-gradient(135deg, #60a5fa, #06b6d4, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.lead { font-size: 1.15rem; color: #9ba3b8; max-width: 700px; margin: 0 auto 32px; line-height: 1.8; }
+.cta { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: linear-gradient(135deg, #3b82f6, #60a5fa); color: white; border-radius: 12px; font-weight: 700; text-decoration: none; margin: 12px 8px; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3); border: none; }
 .cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(59, 130, 246, 0.5); }
-.section { background: rgba(21, 27, 43, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 48px; margin-bottom: 40px; backdrop-filter: blur(10px); transition: all 0.3s ease; }
-.section:hover { border-color: rgba(59, 130, 246, 0.3); transform: translateY(-2px); }
-h2 { font-size: 2rem; margin-bottom: 24px; color: #60a5fa; font-weight: 700; }
-p { color: #9ba3b8; margin-bottom: 16px; line-height: 1.8; font-size: 1.05rem; }
-a { color: #60a5fa; text-decoration: none; border-bottom: 1px solid rgba(96, 165, 250, 0.3); transition: all 0.2s ease; }
+.cta-secondary { background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.3); box-shadow: none; color: #60a5fa; }
+.section { background: rgba(21, 27, 43, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 40px; margin-bottom: 32px; backdrop-filter: blur(10px); }
+h2 { font-size: 1.8rem; margin-bottom: 20px; color: #60a5fa; font-weight: 700; }
+h3 { font-size: 1.2rem; margin-bottom: 12px; color: #c4ccdf; font-weight: 600; }
+p, li { color: #9ba3b8; line-height: 1.8; font-size: 1.02rem; }
+a { color: #60a5fa; text-decoration: none; border-bottom: 1px solid rgba(96, 165, 250, 0.3); }
 a:hover { color: #06b6d4; border-bottom-color: #06b6d4; }
-ul { margin: 24px 0; padding-left: 0; list-style: none; }
-li { margin-bottom: 16px; padding-left: 32px; position: relative; color: #9ba3b8; line-height: 1.7; }
-li::before { content: "✓"; position: absolute; left: 0; color: #10b981; font-weight: 700; font-size: 1.2rem; }
-.footer { margin-top: 80px; padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; color: #6b7280; font-size: 0.95rem; }
+.domains { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 20px 0; }
+.domain-tag { padding: 12px 16px; background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 10px; font-size: 0.95rem; color: #a5b4fc; }
+.tips-list { list-style: none; padding: 0; }
+.tips-list li { margin-bottom: 14px; padding-left: 28px; position: relative; }
+.tips-list li::before { content: "💡"; position: absolute; left: 0; }
+.q-card { background: rgba(15, 20, 35, 0.8); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 16px; padding: 28px; margin-bottom: 20px; }
+.q-num { font-size: 0.8rem; color: #6366f1; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+.q-domain { font-size: 0.78rem; color: #8b5cf6; margin-bottom: 12px; }
+.q-text { color: #d1d5e8; font-size: 1.05rem; margin-bottom: 16px; font-weight: 500; line-height: 1.7; }
+.q-options { list-style: none; padding: 0; margin-bottom: 16px; }
+.q-options li { padding: 10px 14px; margin-bottom: 6px; border-radius: 8px; background: rgba(30, 40, 65, 0.6); border: 1px solid rgba(255,255,255,0.05); font-size: 0.95rem; color: #9ba3b8; }
+.q-options li.correct { background: rgba(16, 185, 129, 0.12); border-color: rgba(16, 185, 129, 0.3); color: #6ee7b7; }
+.q-explain { background: rgba(99, 102, 241, 0.08); border-left: 3px solid #6366f1; padding: 16px 20px; border-radius: 0 10px 10px 0; margin-top: 12px; }
+.q-explain p { font-size: 0.92rem; color: #a5b4fc; white-space: pre-line; }
+details { cursor: pointer; }
+details summary { color: #60a5fa; font-weight: 600; font-size: 0.95rem; padding: 8px 0; }
+.footer { margin-top: 60px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; color: #6b7280; font-size: 0.9rem; }
 .footer a { margin: 0 12px; }
-@media (max-width: 768px) { .container { padding: 40px 20px; } h1 { font-size: 2.5rem; } .section { padding: 32px 24px; } }</style>
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin: 24px 0; }
+.stat { text-align: center; padding: 20px; background: rgba(59, 130, 246, 0.08); border-radius: 12px; border: 1px solid rgba(59, 130, 246, 0.15); }
+.stat-num { font-size: 1.8rem; font-weight: 800; color: #60a5fa; }
+.stat-label { font-size: 0.85rem; color: #6b7280; margin-top: 4px; }
+@media (max-width: 768px) { .container { padding: 32px 16px; } .section { padding: 24px 18px; } .q-card { padding: 20px 16px; } }</style>
 </head>
 <body>
 <div class="container">
+
 <div class="hero">
 <div class="badge">Professional Level</div>
-<h1>AWS Solutions Architect Professional (SAP-C02)</h1>
-<p class="lead">Design complex, enterprise-scale AWS architectures with advanced patterns and best practices.</p>
-<a href="https://nestedcerts.com/articles/solutions-architect-pro" class="cta">Start SAP-C02 Prep →</a>
+<h1>AWS Certified Solutions Architect – Professional (SAP-C02)</h1>
+<p class="lead">Design complex, multi-account, enterprise-scale AWS architectures with advanced migration and optimization patterns.</p>
+<a href="https://nestedcerts.com/articles/solutions-architect-professional" class="cta">Start SAP-C02 Prep →</a>
+<a href="https://nestedcerts.com/certifications" class="cta cta-secondary">All 13 Certifications</a>
 </div>
 
 <div class="section">
-<h2>Why This Certification?</h2>
-<p>The <a href="https://nestedcerts.com/articles/solutions-architect-pro">AWS Solutions Architect Professional</a> certification validates your expertise and opens doors to higher-paying roles. It demonstrates to employers that you have production-ready AWS skills.</p>
+<h2>Exam Domains</h2>
+<p>The SAP-C02 exam tests your knowledge across these domains. Each sample question below is tagged with its domain so you can see exactly what's covered.</p>
+<div class="domains"><div class="domain-tag">Design Solutions for Organizational Complexity</div><div class="domain-tag">Design for New Solutions</div><div class="domain-tag">Continuous Improvement for Existing Solutions</div><div class="domain-tag">Accelerate Workload Migration and Modernization</div></div>
 </div>
 
 <div class="section">
-<h2>Proven Study Strategy</h2>
-<p>Success requires hands-on practice and exam-realistic questions. <a href="https://nestedcerts.com">NestedCerts provides comprehensive practice tests</a> that match the actual SAP-C02 exam format and difficulty.</p>
-<p>Follow our <a href="https://nestedcerts.com/articles/30-day-path">structured 30-day study plan</a> for daily guidance and consistent progress.</p>
+<h2>Platform Stats</h2>
+<div class="stats">
+<div class="stat"><div class="stat-num">30</div><div class="stat-label">Practice Quizzes</div></div>
+<div class="stat"><div class="stat-num">2</div><div class="stat-label">Full Exams</div></div>
+<div class="stat"><div class="stat-num">730+</div><div class="stat-label">Total Questions</div></div>
+<div class="stat"><div class="stat-num">30</div><div class="stat-label">Day Study Plan</div></div>
+</div>
 </div>
 
 <div class="section">
-<h2>What You Get with NestedCerts</h2>
-<ul>
-<li>Practice questions matching SAP-C02 exam format</li>
-<li>Detailed explanations for every answer</li>
-<li>Performance analytics showing weak areas</li>
-<li>30-day structured study plan</li>
-<li>Full-length practice exams</li>
-<li>Mobile-friendly platform</li>
+<h2>Study Tips from Our Question Writers</h2>
+<p>These tips are based on patterns we see across our SAP-C02 question bank — the topics that trip people up most often:</p>
+<ul class="tips-list"><li>Think multi-account — AWS Organizations, SCPs, and Control Tower appear in most questions</li><li>Master Transit Gateway, Direct Connect Gateway, and hybrid networking patterns</li><li>Understand migration strategies (6 Rs) and when to use each one</li><li>Study cross-Region and cross-account patterns — replication, sharing, and access control</li><li>Questions are long and scenario-heavy — practice reading comprehension under time pressure</li></ul>
+</div>
+
+<div class="section">
+<h2>30 Free Sample Questions</h2>
+<p>Below are 30 real practice questions from <a href="https://nestedcerts.com">NestedCerts</a> — one from each of our 30 quizzes for SAP-C02. Each includes the full explanation showing why every answer is correct or incorrect. This is exactly the quality and depth you get across all 730+ questions on the platform.</p>
+</div>
+
+<div class="q-card">
+<div class="q-num">Quiz 1 — Sample Question</div>
+<div class="q-domain">Domain 1: Design Solutions for Organizational Complexity</div>
+<div class="q-text">Select THREE. A large enterprise is designing a network architecture for a new AWS deployment with the following requirements: 100+ VPCs across 4 Regions, centralized egress to the internet, centralized firewall inspection, hybrid connectivity to on-premises data centers, and support for future growth to 500+ VPCs. Which THREE components are essential for this architecture?</div>
+<ul class="q-options"><li class="correct">✓ AWS Direct Connect with Direct Connect Gateway for hybrid connectivity</li>
+<li>VPC peering connections between all VPCs</li>
+<li>NAT Gateways in every VPC for internet egress</li>
+<li class="correct">✓ AWS Transit Gateway in each Region with inter-Region peering</li>
+<li class="correct">✓ AWS Network Firewall in centralized inspection VPCs</li>
+<li>AWS PrivateLink for all inter-VPC communication</li>
 </ul>
-<a href="https://nestedcerts.com" class="cta">Start Free Practice →</a>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why correct (A, D, E): Transit Gateway provides scalable VPC connectivity and centralized routing management, supporting hundreds of VPCs with inter-Region peering. Direct Connect with Direct Connect Gateway provides high-bandwidth, low-latency hybrid connectivity across multiple Regions. Network Firewall in centralized inspection VPCs provides managed firewall capabilities for traffic inspection. These three components form the foundation of a scalable, secure enterprise network architecture.
+- Why B is wrong: VPC peering does not scale to 100+ VPCs (requires thousands of peering connections for full mesh). Peering does not support transitive routing or centralized management. Transit Gateway is the appropriate solution for large-scale VPC connectivity.
+- Why C is wrong: NAT Gateways in every VPC increase costs and do not support centralized egress architecture. The requirement specifies centralized egress, which requires routing internet-bound traffic through centralized egress VPCs via Transit Gateway.
+- Why F is wrong: PrivateLink is designed for exposing specific services to other VPCs or accounts, not for general inter-VPC communication. It operates on a service-consumer model and does not provide full network-level connectivity between VPCs. Transit Gateway is the appropriate solution for VPC-to-VPC connectivity at scale.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 2 — Sample Question</div>
+<div class="q-domain">Domain 1: Design Solutions for Organizational Complexity</div>
+<div class="q-text">A healthcare organization must maintain audit logs of all API activity across 60 AWS accounts for 7 years to meet regulatory compliance requirements. Logs must be tamper-proof, searchable, and stored cost-effectively. The security team requires alerts when specific high-risk API calls are made (e.g., security group changes, IAM policy modifications). Which architecture meets these requirements?</div>
+<ul class="q-options"><li>Enable CloudTrail in each account with logs stored in individual S3 buckets, enable S3 Object Lock for tamper-proofing, and use Athena for searching</li>
+<li>Enable AWS Config in all accounts to record API activity and use Config rules to detect high-risk changes</li>
+<li>Enable CloudTrail in each account with logs sent to CloudWatch Logs, use CloudWatch Logs Insights for searching, and create CloudWatch alarms for high-risk API calls</li>
+<li class="correct">✓ Enable CloudTrail organization trail in the management account with logs stored in a centralized S3 bucket with S3 Object Lock, use S3 Intelligent-Tiering for cost optimization, and configure EventBridge rules for high-risk API alerts</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why D is correct: CloudTrail organization trail provides centralized logging across all accounts from a single configuration. S3 Object Lock in compliance mode ensures tamper-proof storage that cannot be overwritten or deleted, even by the root user. S3 Intelligent-Tiering automatically moves logs to cost-effective storage tiers, which is ideal for 7-year retention. Athena enables ad-hoc SQL querying of logs stored in S3. EventBridge rules can match specific API call patterns (e.g., AuthorizeSecurityGroupIngress, PutUserPolicy) and trigger SNS alerts. This architecture meets all requirements — centralization, tamper-proofing, searchability, cost-efficiency, and alerting — with minimal operational overhead.
+- Why A is wrong: Individual CloudTrail trails in each account create management overhead across 60 accounts. Managing 60 separate S3 buckets with individual Object Lock configurations is operationally inefficient. There is no centralized visibility without additional aggregation. Organization trails eliminate this complexity by automatically applying to all accounts from a single trail.
+- Why B is wrong: AWS Config records resource configuration changes (e.g., a security group rule was modified), not all API activity. Config does not capture data-plane API calls or management-plane calls like DescribeInstances. CloudTrail is the correct service for comprehensive API activity logging. Config is designed for configuration compliance auditing, not API audit logging.
+- Why C is wrong: CloudWatch Logs is significantly more expensive than S3 for long-term storage, especially over a 7-year retention period. CloudWatch Logs pricing is based on ingestion and storage, which would be cost-prohibitive at this scale. S3 with Intelligent-Tiering provides much more cost-effective long-term storage for compliance logs.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 3 — Sample Question</div>
+<div class="q-domain">Domain 1: Design Solutions for Organizational Complexity</div>
+<div class="q-text">Select TWO. An e-commerce company operates a shopping cart application that must handle Black Friday traffic spikes of 50x normal load. The application uses EC2 instances, RDS MySQL, and ElastiCache. Last year, the database became a bottleneck during peak traffic. Which TWO actions improve database scalability for traffic spikes?</div>
+<ul class="q-options"><li>Enable RDS Multi-AZ for better performance</li>
+<li>Disable database backups during peak traffic</li>
+<li class="correct">✓ Implement RDS read replicas and configure the application to route read traffic to replicas</li>
+<li>Migrate to DynamoDB for all data storage</li>
+<li>Increase the RDS instance size to the largest available</li>
+<li class="correct">✓ Implement database query result caching in ElastiCache to reduce database load</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why correct: RDS read replicas (C) distribute read traffic across multiple database instances, reducing load on the primary database. ElastiCache caching (F) reduces database queries by serving frequently accessed data from memory. Together, these approaches significantly reduce database load during traffic spikes, addressing the bottleneck. Both are proven patterns for scaling read-heavy workloads.
+- Why A is wrong: RDS Multi-AZ provides high availability through synchronous standby replication and automatic failover, but the standby instance does not serve read traffic. Multi-AZ improves availability, not read performance or scalability. It does not address the database bottleneck during traffic spikes.
+- Why B is wrong: Disabling backups during peak traffic is a dangerous practice that violates data protection requirements. Automated backups have minimal performance impact on RDS MySQL, and disabling them creates unacceptable risk of data loss without meaningful performance gains.
+- Why D is wrong: Migrating to DynamoDB is a major architectural change that requires significant application refactoring of SQL queries, schema design, and data access patterns. While DynamoDB scales well, the migration effort and risk make this impractical for addressing an upcoming traffic spike.
+- Why E is wrong: Increasing the RDS instance size (scale-up) provides more capacity but has hard upper limits and is less flexible than scale-out with read replicas. A single larger instance cannot handle 50x traffic increases, and scale-up alone does not distribute the read workload. Combining scale-out (read replicas) with caching is more effective and cost-efficient.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 4 — Sample Question</div>
+<div class="q-domain">Domain 1: Design Solutions for Organizational Complexity</div>
+<div class="q-text">A large enterprise with three business units is designing a multi-account AWS environment. Each business unit has development, staging, and production workloads. The security team requires that all production accounts across every business unit have identical restrictive SCPs applied, while development accounts need more permissive policies to allow experimentation. Which organizational unit (OU) hierarchy meets these requirements with the LEAST administrative overhead?</div>
+<ul class="q-options"><li>Create one OU per business unit, with child OUs for each environment underneath, and apply production SCPs to each business unit's production child OU separately</li>
+<li class="correct">✓ Create top-level OUs by environment (Production, Staging, Development) and place each business unit's accounts into the corresponding environment OU, applying SCPs at the environment OU level</li>
+<li>Place all accounts in the root OU and use tag-based IAM policies to differentiate between production and development permissions</li>
+<li>Create a separate AWS Organization for each environment and use cross-organization IAM role assumption for shared access</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why correct: An environment-first OU hierarchy (Production OU, Staging OU, Development OU at the top level) allows applying a single set of restrictive SCPs to the Production OU, which automatically applies to all production accounts regardless of business unit. Development accounts receive more permissive SCPs at the Development OU level. This eliminates maintaining duplicate SCPs across multiple OUs and reduces administrative overhead as additional business units are onboarded.
+- Why A is wrong: A business-unit-first hierarchy requires applying identical production SCPs to each business unit's production child OU separately. With three business units, you manage three copies of the same production SCPs. As business units grow, administrative overhead increases linearly because each new business unit needs its own production child OU with replicated SCPs.
+- Why C is wrong: Placing all accounts in the root OU prevents applying different SCPs to different environments, since SCPs at the root apply to all accounts equally. Tag-based IAM policies can be modified by account administrators and do not provide the centralized enforcement that SCPs applied to OUs deliver.
+- Why D is wrong: Separate AWS Organizations prevent consolidated billing, centralized governance, and unified CloudTrail logging. Cross-organization role assumption adds significant complexity and eliminates the benefits of a single Organization such as SCP inheritance, consolidated Cost Explorer, and organization-wide service integrations.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 5 — Sample Question</div>
+<div class="q-domain">Domain 1: Design Solutions for Organizational Complexity</div>
+<div class="q-text">A financial institution operates a fleet of EC2 instances running transaction-processing applications with consistent, predictable usage around the clock. The company has confirmed this workload will remain stable for at least three years. Current On-Demand costs are $100,000/month. The CTO wants to maximize cost savings. Which purchasing option provides the MAXIMUM discount?</div>
+<ul class="q-options"><li>Purchase 1-year Partial Upfront Savings Plans for compute flexibility</li>
+<li class="correct">✓ Purchase 3-year All Upfront Reserved Instances</li>
+<li>Use Spot Instances for all transaction-processing workloads</li>
+<li>Purchase 1-year All Upfront Reserved Instances</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why correct: 3-year All Upfront Reserved Instances provide the deepest discount available—up to 72% compared to On-Demand pricing. For workloads with steady-state, predictable usage and a confirmed long-term horizon, a 3-year term with full upfront payment yields the greatest savings because AWS rewards both longer commitment and upfront payment.
+- Why A is wrong: 1-year Partial Upfront Savings Plans provide meaningful savings (around 30-40% depending on instance family), but the shorter term and partial payment yield a smaller discount than a 3-year All Upfront RI. For maximum savings with a confirmed 3-year horizon, a 3-year All Upfront RI is superior.
+- Why C is wrong: Spot Instances can provide up to 90% savings, but they can be interrupted with only a 2-minute warning. For steady-state transaction-processing workloads that require consistent availability, Spot Instances create unacceptable risk of service disruption and are not appropriate as the primary capacity strategy.
+- Why D is wrong: 1-year All Upfront Reserved Instances provide a lower discount than 3-year terms. With a confirmed 3-year workload horizon, a 1-year commitment leaves money on the table. The 3-year term provides substantially deeper discounts precisely because the commitment is longer.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 6 — Sample Question</div>
+<div class="q-domain">Domain 1: Design Solutions for Organizational Complexity</div>
+<div class="q-text">A multinational company operates 12 VPCs across two AWS Regions. Each VPC belongs to a different business unit. The company requires any VPC to communicate with any other VPC, including cross-Region, with centralized route management and minimal operational overhead. Which networking architecture meets these requirements?</div>
+<ul class="q-options"><li>Create individual VPC peering connections between all VPCs and use route tables to direct traffic</li>
+<li>Deploy a shared VPC and move all workloads into a single VPC with separate subnets per team</li>
+<li class="correct">✓ Deploy AWS Transit Gateway in the hub Region with inter-Region peering to a second Transit Gateway, and attach each VPC to its regional Transit Gateway</li>
+<li>Establish AWS Site-to-Site VPN tunnels between every pair of VPCs across Regions</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why correct: Transit Gateway acts as a regional network hub that supports transitive routing between all attached VPCs. Inter-Region peering connects two Transit Gateways across Regions, enabling cross-Region VPC-to-VPC communication without managing individual peering connections. This scales well and simplifies route management as VPCs are added.
+- Why A is wrong: VPC peering does not support transitive routing. With 12 VPCs, you would need up to 66 peering connections (n*(n-1)/2), and cross-Region peering still wouldn't allow traffic to transit through an intermediary VPC. This creates an unmanageable mesh that does not scale.
+- Why B is wrong: A shared VPC centralizes networking but forces all workloads into a single VPC, which violates blast-radius isolation between business units and makes independent scaling and security segmentation difficult. It also cannot span multiple Regions within a single VPC.
+- Why D is wrong: Site-to-Site VPN connections between VPCs would require deploying VPN endpoints in every VPC, creating a full mesh of encrypted tunnels. This adds latency, is operationally complex, and VPN throughput (up to 1.25 Gbps per tunnel) is much lower than Transit Gateway throughput. VPN is designed for on-premises-to-AWS connectivity, not VPC-to-VPC.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 7 — Sample Question</div>
+<div class="q-domain">Domain 2: Design for New Solutions</div>
+<div class="q-text">A company runs a business-critical three-tier web application on AWS. The application consists of an Application Load Balancer, an Auto Scaling group of EC2 instances, and an Amazon Aurora database. The operations team needs to deploy application updates with zero downtime and the ability to roll back within minutes if issues are detected. The team manages all infrastructure using AWS CloudFormation. Which deployment approach meets these requirements?</div>
+<ul class="q-options"><li>Update the CloudFormation stack in-place and manually terminate old EC2 instances after verifying the new deployment</li>
+<li class="correct">✓ Create a new CloudFormation stack with the updated resources, use Amazon Route 53 weighted routing to gradually shift traffic to the new stack, and delete the old stack after validation</li>
+<li>Deploy updates directly to the existing EC2 instances using SSH and shell scripts</li>
+<li>Delete the existing CloudFormation stack and create a new one with the updated template</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why correct: Creating a parallel CloudFormation stack implements a blue/green deployment pattern. Route 53 weighted routing enables gradual traffic shifting (e.g., 10% → 50% → 100%) to the new environment while keeping the old stack intact as a rollback target. If issues are detected during validation, traffic can be shifted back to the original stack within minutes by updating the Route 53 weights. This provides true zero-downtime deployment with instant rollback capability.
+- Why A is wrong: In-place CloudFormation stack updates trigger rolling replacements of resources, which can cause brief service disruptions during the update process. Manual instance termination is error-prone and slow. If the update introduces a bug, rollback requires another full stack update, which takes time and is not 'within minutes.' This approach does not guarantee zero downtime.
+- Why C is wrong: Deploying updates directly via SSH completely bypasses Infrastructure as Code principles. The CloudFormation template and actual infrastructure become out of sync (configuration drift), making future deployments unpredictable. There is no automated rollback mechanism — any issues require manual intervention on each instance. This approach is not repeatable, auditable, or scalable.
+- Why D is wrong: Deleting the existing stack before creating a new one causes complete application downtime during the transition period. There is no rollback path because the original environment no longer exists. This directly violates the zero-downtime requirement and introduces significant risk for a business-critical application.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 8 — Sample Question</div>
+<div class="q-domain">Domain 2: Design for New Solutions</div>
+<div class="q-text">A multinational e-commerce company runs its primary application stack in us-east-1. The company's RTO is 1 hour and RPO is 15 minutes. During peak shopping events, the application processes over 10,000 orders per minute. The company wants to minimize DR infrastructure costs while meeting recovery objectives. Which DR strategy meets these requirements?</div>
+<ul class="q-options"><li>Deploy a full production-scale environment in us-west-2 with active-active traffic distribution using Route 53 weighted routing</li>
+<li>Configure nightly database backups to an S3 bucket in us-west-2 with cross-region replication, and maintain CloudFormation templates to rebuild the infrastructure during a disaster</li>
+<li class="correct">✓ Maintain a pilot light environment in us-west-2 with continuously replicated databases using Aurora Global Database and pre-configured but stopped EC2 instances that can be started and scaled during failover</li>
+<li>Deploy identical Auto Scaling groups in us-west-2 running at 50% of production capacity with Aurora Global Database replication and Route 53 failover routing</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why correct: The pilot light strategy keeps critical data services (Aurora Global Database) continuously replicated while minimizing compute costs by keeping EC2 instances stopped. This meets the 15-minute RPO through continuous database replication and the 1-hour RTO by starting pre-configured instances during failover.
+- Why A is wrong: A full production-scale multi-site active-active deployment significantly exceeds cost requirements. While it provides the lowest RTO/RPO, the company specifically wants to minimize DR infrastructure costs, and active-active duplicates the entire production footprint.
+- Why B is wrong: Nightly backups create approximately a 24-hour RPO, far exceeding the 15-minute RPO requirement. Rebuilding infrastructure from CloudFormation templates during a disaster also likely exceeds the 1-hour RTO due to provisioning time, data restoration time, and validation.
+- Why D is wrong: A warm standby at 50% capacity provides faster recovery than pilot light but runs continuously at significantly higher cost. Since the 1-hour RTO can be achieved with pilot light, the warm standby approach incurs unnecessary ongoing infrastructure cost.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 9 — Sample Question</div>
+<div class="q-domain">Domain 2: Design for New Solutions</div>
+<div class="q-text">A company is designing a multi-tier web application on AWS. The application tier runs on EC2 instances in private subnets and must communicate with an Amazon RDS MySQL database in a separate private subnet. The security team requires that only the application tier can reach the database on port 3306, and no other traffic should be allowed to the database subnet. The solutions architect also needs to block specific IP ranges known for malicious activity from reaching the public-facing ALB. Which combination of network controls meets these requirements?</div>
+<ul class="q-options"><li>Configure the RDS security group to allow inbound on port 3306 from the application tier security group. Add a network ACL on the database subnet to deny inbound traffic from the known malicious IP ranges.</li>
+<li class="correct">✓ Configure the RDS security group to allow inbound on port 3306 from the application tier security group. Add a network ACL on the public subnet to deny inbound traffic from the known malicious IP ranges.</li>
+<li>Configure the RDS security group to allow inbound on port 3306 from the entire VPC CIDR. Add a network ACL on the public subnet to deny inbound traffic from the known malicious IP ranges.</li>
+<li>Configure the RDS security group to allow inbound on port 3306 from 0.0.0.0/0. Add a network ACL on the database subnet to deny inbound traffic from the known malicious IP ranges.</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why correct (B): The RDS security group referencing the application tier's security group ensures only instances attached to that specific security group can connect on port 3306, enforcing least privilege at the database layer. The network ACL deny rule on the public subnet blocks known malicious IP ranges before traffic reaches the ALB, since NACLs are stateless and evaluated before security groups. This combination provides defense in depth at both the subnet and instance level.
+- Why A is wrong: While the RDS security group rule is correct, placing the NACL deny rule on the database subnet instead of the public subnet does not block malicious IPs from reaching the ALB. Malicious traffic targets the public-facing ALB in the public subnet, so the NACL must be on the public subnet.
+- Why C is wrong: Allowing the entire VPC CIDR on port 3306 violates least privilege. Any instance in the VPC could reach the database, not just the application tier. Security group references are more restrictive and appropriate.
+- Why D is wrong: Allowing 0.0.0.0/0 on port 3306 opens the database to all traffic, which is a severe security misconfiguration. Even though the database is in a private subnet, this violates the principle of least privilege and defense in depth.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 10 — Sample Question</div>
+<div class="q-domain">Domain 2: Design for New Solutions</div>
+<div class="q-text">A company runs a business-critical web application on Amazon EC2 instances behind an Application Load Balancer in the us-east-1 Region. The application uses an Amazon Aurora MySQL database. The company requires an RTO of 15 minutes and an RPO of 1 minute in case of a Regional failure. Which solution meets these reliability requirements?</div>
+<ul class="q-options"><li>Deploy the application in a single AZ with daily EBS snapshots replicated to another Region. Use Route 53 simple routing to point to the primary Region. In the event of a failure, manually launch instances from snapshots in the DR Region.</li>
+<li>Deploy the application across two AZs in one Region behind an ALB with Auto Scaling. Use Amazon RDS Multi-AZ. Rely on AZ-level redundancy alone without a secondary Region.</li>
+<li class="correct">✓ Deploy the application in an active-passive configuration across two Regions. Use an Aurora Global Database with a secondary Region replica. Configure Route 53 failover routing with health checks to automatically route traffic to the secondary Region if the primary becomes unavailable.</li>
+<li>Deploy the application in both Regions with independent databases in each Region. Use Route 53 weighted routing with 50/50 traffic split. Synchronize databases using a custom replication script running on EC2 instances.</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why correct (C): Aurora Global Database provides managed cross-Region replication with typical lag under 1 second, enabling RPOs of seconds. Route 53 failover routing with health checks provides automated DNS failover. The active-passive pattern meets the RTO/RPO requirements while keeping costs reasonable compared to active-active.
+- Why A is wrong: Daily EBS snapshots provide an RPO of up to 24 hours, which is too long for most business-critical applications. Manual failover increases RTO significantly. This is a backup-and-restore strategy, not a robust DR strategy.
+- Why B is wrong: Multi-AZ within a single Region protects against AZ failures but does not protect against Region-level failures. A business-critical application requiring high availability should have a multi-Region DR strategy.
+- Why D is wrong: Custom EC2-based database replication scripts are fragile and operationally complex. They lack the consistency guarantees of Aurora Global Database. Weighted 50/50 routing without application-level awareness of database state can route users to a Region with stale data.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 11 — Sample Question</div>
+<div class="q-domain">Domain 3: Continuous Improvement for Existing Solutions</div>
+<div class="q-text">A technology company operates an application with slow CloudFront content delivery. Cache hit ratio is low. Which approach improves CloudFront performance?</div>
+<ul class="q-options"><li>Use shortest possible TTL for all content</li>
+<li>Disable CloudFront caching completely</li>
+<li>Route all traffic directly to origin</li>
+<li class="correct">✓ Optimize cache key configuration to improve hit ratio, increase TTL for static content, and use Origin Shield for additional caching layer</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why correct: Optimized cache key configuration improves cache hit ratio by reducing unnecessary cache variations. Increased TTL for static content reduces origin requests. Origin Shield provides additional caching layer between edge and origin. This approach maximizes CloudFront caching effectiveness.
+- Why B is wrong: Disabling caching eliminates CloudFront performance benefits. Caching is the primary CloudFront performance optimization. This approach creates worst performance.
+- Why C is wrong: Shortest TTL increases origin requests and reduces cache effectiveness. Static content should have longer TTL. This approach reduces caching benefits.
+- Why D is wrong: Routing directly to origin eliminates CloudFront benefits. CloudFront provides edge caching for performance. This approach eliminates performance optimization.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 12 — Sample Question</div>
+<div class="q-domain">Domain 2: Design for New Solutions</div>
+<div class="q-text">A large enterprise runs hundreds of EC2 instances across multiple accounts. Monthly compute spend has grown 40% year-over-year, but AWS Compute Optimizer shows average CPU utilization is below 10% on most instances. The company wants to reduce compute costs without impacting application performance. Which approach provides the MOST effective cost reduction?</div>
+<ul class="q-options"><li>Purchase 3-year All Upfront Reserved Instances for all current instance types</li>
+<li>Migrate all workloads to Spot Instances</li>
+<li class="correct">✓ Use AWS Compute Optimizer to identify rightsizing recommendations, resize underutilized instances, then purchase Savings Plans for the new baseline</li>
+<li>Move all workloads to the smallest available instance size</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why C is correct: Rightsizing must happen before committing to Reserved Instances or Savings Plans. AWS Compute Optimizer analyzes utilization metrics to recommend optimal instance types. By first rightsizing to eliminate waste, the company establishes a true baseline, then locks in savings with Savings Plans on the reduced footprint. This two-step approach maximizes cost reduction.
+- Why A is wrong: Purchasing Reserved Instances for current oversized instance types locks in waste. The company would commit to paying for capacity it does not need for 3 years. Rightsizing should always precede purchasing commitments.
+- Why B is wrong: Spot Instances are unsuitable for all workloads because they can be interrupted with 2 minutes notice. Stateful workloads, databases, and latency-sensitive applications cannot tolerate interruptions. Spot is appropriate for fault-tolerant batch workloads, not a blanket strategy.
+- Why D is wrong: Moving all workloads to the smallest instance size ignores actual performance requirements. Applications with legitimate memory, CPU, or network needs would be degraded. Rightsizing means matching to actual utilization, not minimizing blindly.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 13 — Sample Question</div>
+<div class="q-domain">Domain 2: Design for New Solutions</div>
+<div class="q-text">A company runs a three-tier e-commerce application on Amazon ECS with an Aurora PostgreSQL database. A new release includes both application changes and a database schema migration that adds columns used by the new code. The team requires zero-downtime deployments with the ability to roll back within minutes if error rates spike. Which deployment strategy meets these requirements?</div>
+<ul class="q-options"><li>Use an ECS rolling update with minimum healthy percent set to 100% and deploy the schema migration before the code change</li>
+<li>Use an all-at-once deployment with a CloudFormation stack update and a rollback trigger on CloudWatch alarms</li>
+<li class="correct">✓ Use AWS CodeDeploy blue/green deployment for ECS with backward-compatible additive schema changes and CloudWatch alarm-triggered automatic rollback</li>
+<li>Use a canary deployment shifting 10% of traffic first, and apply the schema migration only after the canary is validated</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why A is wrong: A rolling update replaces tasks in batches but does not maintain two full environments simultaneously. If the schema migration breaks the old code, rolling back mid-deployment is difficult because old tasks may fail against the new schema.
+- Why B is wrong: An all-at-once deployment replaces all tasks simultaneously, causing downtime during the transition. It offers no gradual validation or instant rollback path.
+- Why C is correct: Blue/green deployment with CodeDeploy keeps the original (blue) environment running while the new (green) environment is validated. The database schema migration uses backward-compatible additive changes (new columns) so both old and new code work. If error rates spike, CodeDeploy automatically shifts traffic back to blue within minutes. This is the standard zero-downtime pattern for ECS when schema changes are involved.
+- Why D is wrong: Canary deployment shifts a small percentage of traffic to new tasks, which works for code-only changes. However, a canary still requires all tasks to share the same database. If the schema migration is applied, canary does not isolate the old code from the new schema any better than blue/green, and CodeDeploy's blue/green mode provides faster full rollback than progressively draining canary traffic.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 14 — Sample Question</div>
+<div class="q-domain">Domain 3: Continuous Improvement for Existing Solutions</div>
+<div class="q-text">Select THREE. A company runs 50 microservices on Amazon ECS. The operations team receives over 300 CloudWatch alarm notifications per day, many of which are transient spikes that resolve without intervention. Engineers spend 4 hours daily triaging alerts and frequently miss genuine incidents buried in the noise. Which THREE changes MOST effectively improve the alerting strategy?</div>
+<ul class="q-options"><li class="correct">✓ Implement CloudWatch composite alarms to correlate related metrics and reduce notification noise by triggering only when multiple conditions are met simultaneously</li>
+<li class="correct">✓ Configure CloudWatch anomaly detection to replace static thresholds with machine-learning-based dynamic baselines that adapt to daily and weekly traffic patterns</li>
+<li>Send all CloudWatch alarm notifications to a single shared email inbox so that one person can triage all alerts</li>
+<li>Disable CloudWatch detailed monitoring on non-production instances to reduce the total number of metrics generated</li>
+<li class="correct">✓ Deploy CloudWatch ServiceLens with X-Ray integration to provide end-to-end service maps that correlate alarms with trace data for faster root-cause identification</li>
+<li>Create individual CloudWatch alarms for every available metric on every EC2 instance to maximize observability coverage</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why A is correct: Composite alarms combine multiple alarm states using AND/OR logic, so a notification fires only when correlated conditions are met simultaneously—for example, high CPU AND high error rate. This eliminates transient single-metric spikes from reaching operators.
+- Why B is correct: Anomaly detection uses machine learning to build dynamic baselines that account for daily, weekly, and seasonal patterns. This replaces static thresholds that trigger false positives during predictable traffic changes (e.g., nightly batch jobs).
+- Why E is correct: ServiceLens with X-Ray integration provides a service map that correlates alarms, metrics, logs, and traces in a single view. When an alarm fires, operators can immediately see the upstream/downstream impact and pinpoint the root cause, dramatically reducing triage time.
+- Why C is wrong: A single shared inbox does not reduce alert volume—it merely consolidates the same noise into one place. Without filtering or correlation, the team still has 300+ emails to triage daily.
+- Why D is wrong: Disabling detailed monitoring removes granularity needed for accurate alarming. The problem is not too many metrics—it is too many poorly configured alarms. Reducing metric resolution makes remaining alarms less accurate.
+- Why F is wrong: Creating alarms for every available metric dramatically increases alert volume rather than reducing it. This worsens alert fatigue by generating hundreds of additional low-value notifications.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 15 — Sample Question</div>
+<div class="q-domain">Domain 3: Continuous Improvement for Existing Solutions</div>
+<div class="q-text">Select TWO. A financial institution operates 50 RDS databases across multiple accounts. Application teams currently store database credentials in configuration files on EC2 instances. A recent security audit flagged that credentials are rarely rotated and some are shared across environments. The CISO requires automated credential rotation and reduced exposure risk. Which TWO actions BEST address these requirements?</div>
+<ul class="q-options"><li>Store credentials in EC2 environment variables and rotate them manually during quarterly maintenance windows</li>
+<li>Extend credential rotation intervals to 180 days to reduce operational disruption from rotation failures</li>
+<li class="correct">✓ Migrate credentials to AWS Secrets Manager with automatic rotation enabled on a 30-day schedule</li>
+<li>Hardcode credentials in the application source code and encrypt the repository with AWS KMS</li>
+<li class="correct">✓ Enable IAM database authentication for supported RDS engines to eliminate password-based access</li>
+<li>Create a single master credential shared across all databases to simplify rotation management</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why correct (C and E): AWS Secrets Manager provides automatic rotation of secrets on a configurable schedule (e.g., every 30, 60, or 90 days) using Lambda rotation functions. For RDS, Secrets Manager offers built-in rotation templates that update both the secret and the database credential automatically without application downtime. IAM database authentication eliminates passwords entirely for supported engines (MySQL, PostgreSQL on RDS/Aurora) by using short-lived IAM tokens, removing the risk of static credential exposure altogether. Together, these two approaches address different parts of the credential lifecycle—rotating what must remain a secret and eliminating secrets where possible.
+- Why A is wrong: Storing credentials in environment variables does not provide rotation, auditing, or encryption at rest. If the environment is compromised (e.g., container escape, EC2 metadata exposure), credentials are exposed in plaintext. This violates secrets management best practices.
+- Why B is wrong: Extending rotation intervals to 180 days increases the window of exposure if credentials are compromised. Security best practices recommend shorter rotation intervals, not longer. The goal is to reduce risk from credential theft, which requires more frequent rotation.
+- Why D is wrong: Hardcoding credentials in application source code is one of the most dangerous practices—credentials end up in version control, CI/CD logs, and container images. Any developer or system with repository access can read them. This is the opposite of secure credential management.
+- Why F is wrong: A shared master credential across all databases creates a single point of failure. If that one credential is compromised, all 50 databases are exposed simultaneously. Least privilege requires separate credentials per database or service.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 16 — Sample Question</div>
+<div class="q-domain">Domain 3: Design Solutions for Continuous Improvement</div>
+<div class="q-text">Select TWO. A company runs a microservices application on Amazon EKS across three Availability Zones. Users report intermittent latency spikes during peak hours. The operations team has no visibility into which component is causing the bottleneck — network, compute, or application layer. Which TWO actions should the solutions architect recommend FIRST to identify the performance bottleneck?</div>
+<ul class="q-options"><li class="correct">✓ Enable VPC Flow Logs and use CloudWatch Logs Insights to identify top-talker instances and dropped packets across subnets</li>
+<li>Increase the instance size of every EC2 instance in the VPC to the next larger instance type</li>
+<li class="correct">✓ Enable CloudWatch Container Insights on the EKS clusters and create dashboards for pod-level CPU, memory, and network metrics</li>
+<li>Replace all Application Load Balancers with Network Load Balancers to reduce load balancer latency</li>
+<li>Deploy a third-party packet capture tool on a dedicated EC2 instance and mirror all VPC traffic to it</li>
+<li>Redeploy all workloads into a single Availability Zone to reduce cross-AZ network latency</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why A and C are correct: VPC Flow Logs combined with CloudWatch Logs Insights allow the team to analyze network traffic patterns, identify top-talker instances, and detect dropped packets — directly pinpointing network-layer bottlenecks. Container Insights for EKS provides pod-level CPU, memory, and network metrics, which surfaces application-layer bottlenecks in containerized workloads. Together these cover both infrastructure and application performance visibility.
+- Why B is wrong: Blindly upsizing all instances is expensive and does not address the root cause. The team needs to first identify which components are bottlenecked before scaling. Rightsizing should be data-driven, not blanket.
+- Why D is wrong: Replacing ALBs with NLBs changes Layer 7 to Layer 4 load balancing, which removes HTTP-level routing, sticky sessions, and WAF integration. This is a significant architectural change that may break application functionality and does not address the actual bottleneck without evidence that the ALB is the problem.
+- Why E is wrong: Full packet capture on all VPC traffic generates massive data volumes and requires significant compute and storage. VPC Flow Logs and CloudWatch metrics provide the performance telemetry needed without this overhead. Packet capture is a last-resort diagnostic, not a first step.
+- Why F is wrong: Consolidating into a single AZ eliminates Multi-AZ resilience and violates high availability best practices. Cross-AZ latency is typically sub-2ms and is rarely the actual bottleneck for web applications.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 17 — Sample Question</div>
+<div class="q-domain">Domain 3: Continuous Improvement for Existing Solutions</div>
+<div class="q-text">A company runs a critical e-commerce application on a single Amazon RDS for PostgreSQL instance in us-east-1a. During a recent Availability Zone outage, the database was unavailable for 45 minutes, causing significant revenue loss. The company wants to improve database reliability while minimizing changes to the application connection logic. What should a solutions architect recommend?</div>
+<ul class="q-options"><li>Create a read replica in a different Availability Zone and promote it manually during failures</li>
+<li class="correct">✓ Enable Multi-AZ deployment on the existing RDS instance to provide an automatic failover standby in a different Availability Zone</li>
+<li>Migrate to Amazon Aurora and configure Aurora Global Database across two Regions</li>
+<li>Take frequent automated snapshots and restore to a new instance in a different Availability Zone during failures</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why correct (B): RDS Multi-AZ creates a synchronous standby replica in a different AZ with automatic failover (typically 60-120 seconds). The application uses the same DNS endpoint, so no connection logic changes are needed. This directly addresses the single-AZ failure scenario with minimal disruption.
+- Why A is wrong: Read replicas use asynchronous replication and require manual promotion, which means downtime during failover and potential data loss. The application would also need connection string changes to point to the promoted replica.
+- Why C is wrong: Aurora Global Database provides cross-Region replication, which is over-engineered for an AZ-level failure. It introduces significant complexity and cost when Multi-AZ within the same Region solves the stated problem.
+- Why D is wrong: Restoring from snapshots requires creating a new instance (which takes minutes to hours depending on size), results in data loss since the last snapshot, and requires updating application connection strings. This provides the worst RTO and RPO of all options.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 18 — Sample Question</div>
+<div class="q-domain">Domain 3: Continuous Improvement for Existing Solutions</div>
+<div class="q-text">A large enterprise runs a fleet of 200 m5.xlarge EC2 instances across multiple accounts for a customer-facing application. Usage analysis shows average CPU utilization of 12% with occasional peaks to 35%. The company wants to reduce compute costs while maintaining performance during peak periods. Which approach provides the MOST cost savings?</div>
+<ul class="q-options"><li>Purchase 3-year All Upfront Reserved Instances for all 200 m5.xlarge instances to maximize the per-hour discount</li>
+<li class="correct">✓ Use AWS Compute Optimizer to identify rightsizing recommendations, rightsize the fleet, then purchase Compute Savings Plans for the optimized capacity</li>
+<li>Replace all instances with Spot Instances using Spot Fleet with capacity-optimized allocation strategy</li>
+<li>Migrate the entire application to AWS Lambda to eliminate instance management overhead</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why correct: AWS Compute Optimizer analyzes historical utilization (CPU, memory, network, disk) over a 14-day period and recommends optimal instance types and sizes. Rightsizing BEFORE purchasing commitments is critical — purchasing Reserved Instances or Savings Plans for oversized instances locks in waste. After rightsizing (e.g., from m5.xlarge to m5.large or m6i.large), Compute Savings Plans provide flexible discounts across any EC2 instance family, Region, OS, or tenancy.
+- Why A is wrong: Purchasing 3-year All Upfront RIs for the current m5.xlarge fleet locks in 200 oversized instances for 3 years. At 12% average CPU, these instances are significantly over-provisioned. Committing before rightsizing 'locks in the waste' — you save on the per-hour rate but still pay for capacity you don't need. Always rightsize first, then commit.
+- Why C is wrong: Spot Instances offer up to 90% discount but can be interrupted with 2 minutes' notice. For a customer-facing application, Spot interruptions would cause user-visible outages. Spot is ideal for fault-tolerant, stateless batch workloads — not primary production serving.
+- Why D is wrong: Migrating 200 EC2 instances to Lambda is a massive re-architecture effort that may not be feasible for a stateful, long-running customer-facing application. Lambda has a 15-minute execution timeout, 10 GB memory limit, and is designed for event-driven workloads, not persistent application servers. This doesn't address the immediate rightsizing opportunity.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 19 — Sample Question</div>
+<div class="q-domain">Domain 2: Design for New Solutions</div>
+<div class="q-text">Select TWO. A financial institution needs to enable private subnet internet access. Which TWO solutions provide private subnet internet access?</div>
+<ul class="q-options"><li>Internet Gateway for private subnets</li>
+<li class="correct">✓ NAT Instance for private subnet internet access</li>
+<li>Public IP addresses for private subnets</li>
+<li>No internet access</li>
+<li>Direct internet routing</li>
+<li class="correct">✓ NAT Gateway for private subnet internet access</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why correct: NAT Gateway provides managed NAT for private subnet internet access. NAT Instance provides self-managed NAT for private subnet internet access. These two solutions provide private subnet internet access.
+- Why C is wrong: Internet Gateway for private subnets does not work. Private subnets require NAT. This approach does not work.
+- Why D is wrong: No internet access prevents internet connectivity. Internet access is required. This approach does not meet requirements.
+- Why E is wrong: Public IP addresses for private subnets violates private subnet definition. NAT is required. This approach is incorrect.
+- Why F is wrong: Direct internet routing for private subnets does not work. NAT is required. This approach does not work.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 20 — Sample Question</div>
+<div class="q-domain">Domain 4: Accelerate Workload Migration and Modernization</div>
+<div class="q-text">A large enterprise is planning to migrate 500 applications from three on-premises data centers to AWS. The migration program manager needs a single location to track migration progress across multiple AWS Regions and accounts, including applications being migrated using AWS Application Migration Service and AWS Database Migration Service. Which solution provides centralized migration tracking with the LEAST operational overhead?</div>
+<ul class="q-options"><li>Build a custom migration tracking dashboard using AWS Lambda, Amazon DynamoDB, and Amazon CloudWatch</li>
+<li class="correct">✓ Use AWS Migration Hub to track and manage application migrations from a central location</li>
+<li>Configure AWS CloudTrail to log all migration-related API calls and use Amazon Athena to query progress</li>
+<li>Use each migration tool's individual console and manually consolidate status in a shared spreadsheet</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why correct: AWS Migration Hub provides a single pane of glass to track migration progress across multiple AWS tools (Application Migration Service, DMS, etc.), Regions, and accounts. It automatically aggregates status from integrated migration tools without requiring custom dashboards or manual updates.
+- Why A is wrong: Building a custom dashboard with Lambda, DynamoDB, and CloudWatch requires significant development and ongoing maintenance. Migration Hub provides this functionality natively with direct integration to AWS migration services, making the custom approach unnecessarily complex.
+- Why C is wrong: AWS CloudTrail records API calls for auditing, not migration progress tracking. It logs who did what and when, but does not provide application-level migration status, grouping, or progress visualization.
+- Why D is wrong: While separate dashboards per migration tool would show individual tool status, this fragments visibility across tools and requires manual correlation. Migration Hub's value is precisely in unifying status from multiple tools into one view.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 21 — Sample Question</div>
+<div class="q-domain">Domain 4: Accelerate Workload Migration and Modernization</div>
+<div class="q-text">A financial services company is migrating a 2 TB Oracle 11g RAC database to AWS. The database uses PL/SQL packages, materialized views, and Oracle-specific datatypes extensively. The company wants to modernize to an open-source database engine and requires less than 30 minutes of downtime during the cutover. Which migration approach meets these requirements?</div>
+<ul class="q-options"><li>Use AWS DMS to replicate data directly from Oracle to Aurora PostgreSQL without schema conversion</li>
+<li class="correct">✓ Use AWS SCT to convert the Oracle schema and PL/SQL code to PostgreSQL equivalents, then use AWS DMS with change data capture to migrate data with minimal downtime</li>
+<li>Export Oracle data to CSV files, upload to Amazon S3, and use AWS Glue ETL jobs to transform and load the data into Aurora PostgreSQL</li>
+<li>Use Oracle Data Pump to export the database, transfer the dump files to Amazon S3, and use pg_restore to import into Aurora PostgreSQL</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why B is correct: AWS Schema Conversion Tool (SCT) analyzes Oracle-specific objects — PL/SQL packages, materialized views, Oracle-specific datatypes — and converts them to Aurora PostgreSQL equivalents, flagging items that need manual intervention. AWS DMS with change data capture (CDC) then handles the data migration by performing a full load followed by continuous replication of ongoing transactions. This combination is the AWS-recommended approach for heterogeneous database migrations requiring minimal downtime.
+- Why A is wrong: DMS alone handles data movement but does not convert Oracle PL/SQL stored procedures, packages, or Oracle-specific schema objects to PostgreSQL equivalents. Without SCT, the application-layer database code would fail on Aurora PostgreSQL.
+- Why C is wrong: Exporting to CSV and using Glue loses Oracle-specific datatypes, does not convert PL/SQL code, requires significant custom ETL development, and creates a longer outage window because there is no continuous replication.
+- Why D is wrong: Oracle Data Pump exports in Oracle-specific format, and pg_restore expects PostgreSQL-format dump files. These tools are incompatible across database engines. Additionally, this approach requires a full export/import cycle with no CDC, resulting in extended downtime.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 22 — Sample Question</div>
+<div class="q-domain">Domain 4: Accelerate Workload Migration and Modernization</div>
+<div class="q-text">A company runs a legacy .NET monolithic application on physical servers with 64 vCPUs and 256 GB RAM. Performance monitoring shows the application consistently uses less than 30% CPU but requires 200 GB of RAM for in-memory caching. The company wants to migrate to AWS with minimal application changes and optimize instance costs. Which EC2 instance type is most appropriate for this workload?</div>
+<ul class="q-options"><li>c6i.8xlarge (compute-optimized, 32 vCPUs, 64 GB RAM)</li>
+<li class="correct">✓ r6i.8xlarge (memory-optimized, 32 vCPUs, 256 GB RAM)</li>
+<li>m6i.16xlarge (general-purpose, 64 vCPUs, 256 GB RAM)</li>
+<li>c6i.16xlarge (compute-optimized, 64 vCPUs, 128 GB RAM)</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why correct: The r6i.8xlarge is a memory-optimized instance providing 32 vCPUs and 256 GB RAM. Since the workload is memory-bound (needs 200 GB RAM) but CPU-light (under 30% of 64 vCPUs = ~19 vCPUs needed), a memory-optimized instance with fewer vCPUs and ample RAM is the best fit. The r6i family offers the highest memory-to-vCPU ratio among the options.
+- Why A is wrong: The c6i.8xlarge is compute-optimized with 32 vCPUs but only 64 GB RAM. This is far below the 200 GB RAM requirement. Compute-optimized instances have a low memory-to-vCPU ratio, which is the opposite of what this workload needs.
+- Why C is wrong: The m6i.16xlarge provides 64 vCPUs and 256 GB RAM. While it meets the memory requirement, it vastly over-provisions CPU (64 vCPUs when only ~19 are needed), resulting in unnecessary cost. General-purpose instances have a balanced ratio that doesn't match this memory-heavy workload profile.
+- Why D is wrong: The c6i.16xlarge is compute-optimized with 64 vCPUs but only 128 GB RAM. It fails the 200 GB RAM requirement and over-provisions CPU. This instance type is designed for compute-intensive workloads, not memory-intensive ones.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 23 — Sample Question</div>
+<div class="q-domain">Domain 4: Accelerate Workload Migration and Modernization</div>
+<div class="q-text">A company is modernizing its monolithic order-processing application running on EC2 instances. The application handles order intake, inventory checks, payment processing, and shipping notifications in a single codebase. During peak sales events, the inventory-check module becomes a bottleneck that slows the entire application. The company wants to decouple the inventory-check module first while minimizing changes to the rest of the application. Which approach should a solutions architect recommend?</div>
+<ul class="q-options"><li>Refactor the inventory-check module into a Lambda function invoked synchronously by the monolith via API calls</li>
+<li class="correct">✓ Extract the inventory-check module into a separate service with an Amazon SQS queue between order intake and inventory checking</li>
+<li>Move the entire application to Amazon ECS with Fargate and scale the container when inventory checks slow down</li>
+<li>Migrate the inventory-check data to Amazon DynamoDB to speed up lookups without changing the application architecture</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why correct (B): Extracting the inventory-check module into a separate service with an SQS queue between it and the order-intake module provides asynchronous decoupling. The order service publishes messages to the queue and continues processing. The inventory service consumes messages independently and can scale horizontally based on queue depth. This isolates the bottleneck without requiring changes to other modules.
+- Why A is wrong: Refactoring into a Lambda function with synchronous API calls still creates tight coupling. If Lambda execution is slow or throttled, the monolith still blocks waiting for the response, reproducing the same bottleneck.
+- Why C is wrong: Containerizing the entire monolith on ECS with Fargate does not decouple components. Scaling the whole container wastes resources on modules that are not bottlenecked and does not enable independent deployment.
+- Why D is wrong: Migrating inventory data to DynamoDB may improve data-layer performance but does not decouple the inventory-check module from the monolith. The application code remains tightly coupled, and the bottleneck in application logic persists.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 24 — Sample Question</div>
+<div class="q-domain">Domain 4: Accelerate Workload Migration and Modernization</div>
+<div class="q-text">A large enterprise is planning to migrate 800 applications from three on-premises data centers to AWS. The migration team needs to understand application dependencies, right-size target infrastructure, and track migration progress across multiple teams. The CTO requires a single dashboard showing migration status for all workloads. Which combination provides the MOST comprehensive migration planning capability?</div>
+<ul class="q-options"><li class="correct">✓ Use AWS Application Discovery Service with agentless discovery for VMware VMs and agent-based discovery for physical servers, then use AWS Migration Hub to aggregate findings and track migration waves</li>
+<li>Manually inventory all servers using spreadsheets, use AWS Pricing Calculator for cost estimates, and track progress in a project management tool</li>
+<li>Deploy Amazon CloudWatch agents on all on-premises servers, use AWS Config for dependency mapping, and build a custom dashboard in Amazon QuickSight</li>
+<li>Use AWS Migration Hub Refactor Spaces to discover all applications, use AWS Trusted Advisor for right-sizing, and track progress in AWS Organizations</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why correct (A): AWS Application Discovery Service provides two discovery modes — agentless discovery for VMware vCenter environments and agent-based discovery for physical servers and non-VMware VMs. It collects server specifications, performance data, and network dependencies. Migration Hub aggregates discovery data and provides a single dashboard to track migration status across teams and waves. This combination delivers comprehensive planning with dependency mapping and centralized tracking.
+- Why B is wrong: Manual spreadsheet inventory cannot capture real-time dependencies or performance data. AWS Pricing Calculator estimates costs but does not discover or assess existing infrastructure. This approach lacks automation and accuracy for 800 applications.
+- Why C is wrong: CloudWatch agents are designed for monitoring AWS resources, not discovering on-premises application dependencies. AWS Config tracks AWS resource configurations, not on-premises infrastructure. QuickSight is a BI tool, not a migration tracking solution.
+- Why D is wrong: Migration Hub Refactor Spaces is for incremental application refactoring (strangler fig pattern), not for initial discovery. Trusted Advisor provides AWS best-practice recommendations, not right-sizing for on-premises workloads. AWS Organizations manages accounts, not migration tracking.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 25 — Sample Question</div>
+<div class="q-domain">Domain 2: Design for New Solutions</div>
+<div class="q-text">A financial services company runs a high-performance computing (HPC) workload on EC2 that requires low-latency, high-throughput inter-node communication for tightly coupled parallel simulations. The cluster uses 200 instances of the same type within a single Availability Zone. The team is experiencing inconsistent network performance between nodes. Which placement strategy provides the BEST network performance for this workload?</div>
+<ul class="q-options"><li>Deploy instances in a spread placement group across the Availability Zone to maximize hardware diversity and reduce correlated failures</li>
+<li>Distribute instances across three Availability Zones with an Application Load Balancer to improve fault tolerance and network distribution</li>
+<li class="correct">✓ Launch all instances in a cluster placement group within a single Availability Zone with enhanced networking enabled</li>
+<li>Use a partition placement group with 10 partitions to isolate groups of instances on separate racks and reduce blast radius</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why correct: A cluster placement group places instances on the same underlying hardware rack with high-bisection bandwidth networking, providing the lowest latency and highest throughput between instances. For tightly coupled HPC workloads that require inter-node communication (MPI, NCCL), cluster placement groups are essential. They support enhanced networking and can achieve up to 100 Gbps network bandwidth between instances in the group.
+- Why A is wrong: A spread placement group distributes instances across distinct hardware racks to minimize correlated failures. While this improves availability, it increases inter-instance latency because nodes are physically separated. Spread placement groups also have a limit of 7 instances per AZ per group, making them unsuitable for a 200-instance HPC cluster.
+- Why B is wrong: Running instances across multiple Availability Zones improves availability but introduces cross-AZ network latency (typically 1-2ms) that is unacceptable for tightly coupled HPC workloads requiring microsecond-level inter-node communication. An ALB distributes HTTP requests but does not improve inter-node MPI communication. HPC clusters should run in a single AZ within a cluster placement group.
+- Why D is wrong: A partition placement group divides instances into logical partitions on separate racks—designed for distributed workloads like HDFS, HBase, or Cassandra that need fault isolation between groups of instances. Partitions increase physical separation, which increases network latency between partitions. This is the wrong trade-off for tightly coupled HPC.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 26 — Sample Question</div>
+<div class="q-domain">Domain 3: Continuous Improvement for Existing Solutions</div>
+<div class="q-text">A company runs a critical application backed by an Amazon Aurora MySQL cluster in us-east-1. The disaster recovery plan requires an RPO of less than 5 seconds and an RTO of less than 1 minute for a secondary Region in eu-west-1. Which solution meets these requirements?</div>
+<ul class="q-options"><li>Create a cross-Region Aurora read replica in eu-west-1 and configure Route 53 failover routing</li>
+<li class="correct">✓ Deploy an Aurora Global Database with a secondary cluster in eu-west-1</li>
+<li>Set up an RDS MySQL Multi-AZ instance in eu-west-1 with AWS DMS CDC replication from us-east-1</li>
+<li>Configure hourly automated snapshots with cross-Region copy to eu-west-1</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why correct (B): Aurora Global Database uses storage-level replication to maintain up to five secondary Regions with typical replication lag under one second. In a disaster, promoting the secondary Region takes less than one minute, meeting the RTO requirement. It provides an RPO of approximately one second because replication is continuous at the storage layer.
+- Why A is wrong: A cross-Region Aurora read replica uses binlog-based replication, which has higher replication lag (seconds to minutes) and longer failover time compared to Aurora Global Database's storage-level replication. It cannot guarantee the sub-minute RTO requirement.
+- Why C is wrong: Setting up a separate RDS MySQL instance in eu-west-1 with DMS replication introduces additional complexity and higher replication lag than Aurora Global Database. DMS CDC replication lag is typically seconds to minutes, and failover requires manual DNS changes and application reconfiguration, making sub-minute RTO impractical.
+- Why D is wrong: Hourly snapshot copies to eu-west-1 would result in up to one hour of data loss (RPO of ~1 hour) and restoration from snapshot takes significant time (well over one minute for a large database), failing both RPO and RTO requirements.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 27 — Sample Question</div>
+<div class="q-domain">Domain 1: Design Solutions for Organizational Complexity</div>
+<div class="q-text">A company recently acquired another company. The acquired company's AWS account needs to access specific S3 buckets in the parent company's account. The security team requires protection against the confused deputy problem and mandates that only the acquired company's specific application role can assume the cross-account role. No long-lived credentials should be shared between accounts. Which approach provides the MOST secure cross-account access?</div>
+<ul class="q-options"><li>Create an IAM user in the parent account with S3 access, generate access keys, and securely share the credentials with the acquired company through AWS Secrets Manager</li>
+<li class="correct">✓ Configure an IAM role in the parent account with a trust policy that specifies the acquired company's account ID and requires an external ID condition, and grant only the required S3 permissions</li>
+<li>Add a bucket policy on each S3 bucket that grants access to the acquired company's account root principal, allowing any IAM entity in that account to access the buckets</li>
+<li>Establish AWS PrivateLink between both accounts and use VPC endpoint policies to restrict S3 access to the acquired company's VPC</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>- Why correct (B): An IAM role with a trust policy specifying the source account ID and an external ID condition is the AWS-recommended approach for cross-account access. The external ID protects against the confused deputy problem by ensuring only the intended party can assume the role. Temporary credentials from STS AssumeRole are used instead of long-lived keys.
+- Why A is wrong: Creating IAM users with access keys introduces long-lived credentials that can be leaked or stolen. This violates the requirement of no shared long-lived credentials and does not use role-based cross-account access.
+- Why C is wrong: Granting access to the account root principal allows ANY IAM entity in the acquired account to access the buckets, not just the specific application role. This is overly permissive and does not protect against the confused deputy problem.
+- Why D is wrong: AWS PrivateLink provides private network connectivity but does not address IAM-level authentication or authorization. S3 access still requires IAM permissions, and PrivateLink alone does not solve the cross-account access control requirement.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 28 — Sample Question</div>
+<div class="q-domain">Domain 4: Accelerate Workload Migration and Modernization</div>
+<div class="q-text">A company is migrating 400 servers from its on-premises data center to AWS. The migration team is using AWS Application Migration Service (MGN) for rehosting and AWS Database Migration Service (DMS) for database migrations. Management requires a single dashboard to track the progress of all migrations, including server and database workloads, and to identify which applications have been fully migrated. Which solution provides this centralized tracking capability?</div>
+<ul class="q-options"><li class="correct">✓ Use AWS Migration Hub to aggregate migration status from MGN and DMS into a single tracking dashboard</li>
+<li>Build a custom Amazon QuickSight dashboard that queries MGN and DMS APIs for migration status</li>
+<li>Create an Amazon CloudWatch dashboard with custom metrics from each migration tool</li>
+<li>Use AWS Systems Manager OpsCenter to track migration tasks as OpsItems</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>Why A is correct: AWS Migration Hub provides a single location to track the progress of application migrations across multiple AWS tools, including MGN and DMS. It automatically aggregates status updates from integrated migration tools, giving the team a unified view of which servers and databases have been migrated, are in progress, or have not started. Migration Hub itself is free — you only pay for the individual migration tools.
+
+Why B is wrong: Creating a custom dashboard in Amazon QuickSight would require building and maintaining custom data pipelines to pull status from MGN and DMS. This adds significant development effort when Migration Hub already provides native integration with both services at no additional cost.
+
+Why C is wrong: AWS CloudWatch dashboards can display operational metrics but do not natively integrate with MGN and DMS migration status tracking. CloudWatch tracks infrastructure metrics, not migration progress states like &quot;not started,&quot; &quot;in progress,&quot; or &quot;completed.&quot;
+
+Why D is wrong: AWS Systems Manager OpsCenter is designed for managing operational issues (OpsItems) and remediation runbooks. It does not provide migration progress tracking or integrate with migration tools for status aggregation.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 29 — Sample Question</div>
+<div class="q-domain"></div>
+<div class="q-text">A company's API uses Amazon API Gateway, AWS Lambda, and Amazon DynamoDB. During traffic spikes, some requests fail because the Lambda functions exceed the account-level concurrency limit. The company wants to improve resilience to concurrency quota limits and prevent a total outage during spikes. What should they do?</div>
+<ul class="q-options"><li>Remove all throttling and allow unlimited concurrency</li>
+<li class="correct">✓ Add an Amazon SQS queue between API Gateway and the processing Lambda function, and set reserved concurrency on the worker Lambda to a safe value below the account limit</li>
+<li>Move all Lambda functions to Amazon EC2 without changing anything else</li>
+<li>Increase DynamoDB read capacity units only</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>SQS buffers traffic spikes and decouples API ingestion from backend processing. Reserved concurrency on the worker Lambda prevents uncontrolled scaling that would consume the entire account concurrency quota, protecting both this workload and other Lambda functions in the account.
+
+#### Why A is wrong
+You cannot remove AWS account-level concurrency limits. Even if you could, allowing unconstrained scaling would overwhelm downstream DynamoDB and worsen cascading failures.
+
+#### Why C is wrong
+Migrating to EC2 increases operational overhead (patching, scaling configuration, instance management) and does not inherently solve burst buffering. You would still need to implement queuing and rate control.
+
+#### Why D is wrong
+Increasing DynamoDB read capacity does not address the Lambda concurrency quota issue. The failures occur at the Lambda layer, not the database layer.</p></div>
+</details>
+</div>
+<div class="q-card">
+<div class="q-num">Quiz 30 — Sample Question</div>
+<div class="q-domain"></div>
+<div class="q-text">A company deploys a monolithic application on EC2 behind an ALB. Deployments currently use “all-at-once” and cause outages during peak traffic. The team needs a safer deployment strategy with automated rollback based on health signals, and they want minimal code changes. Which approach is BEST?</div>
+<ul class="q-options"><li>Continue all-at-once deployments but increase instance size during deploy windows</li>
+<li class="correct">✓ Use AWS CodeDeploy blue/green deployments for EC2 with ALB target groups and automatic rollback on CloudWatch alarms</li>
+<li>Use manual SSH to update binaries on each instance in sequence</li>
+<li>Disable health checks during deployments to avoid false failures</li>
+</ul>
+<details>
+<summary>Show Explanation</summary>
+<div class="q-explain"><p>Blue/green deployments with CodeDeploy reduce blast radius by provisioning a separate replacement environment and shifting traffic between ALB target groups. If CloudWatch alarms detect health degradation during the shift, CodeDeploy automatically rolls back traffic to the original environment, restoring service quickly with minimal code changes.
+
+#### Why A is wrong
+Increasing instance size does not address deployment risk. The all-at-once strategy still replaces all instances simultaneously, so an outage occurs regardless of instance size.
+
+#### Why C is wrong
+Manual SSH updates are error-prone, slow, not auditable, and do not support automated rollback based on health signals.
+
+#### Why D is wrong
+Disabling health checks hides real failures during deployment, increases outage duration, and removes the health signals needed for automated rollback.</p></div>
+</details>
 </div>
 
-<div class="section">
-<h2>Career Impact</h2>
-<p>AWS certified professionals earn significantly higher salaries. This certification demonstrates your commitment to excellence and validates your skills to employers worldwide.</p>
-</div>
-
-<div class="section">
-<h2>Ready to Get Certified?</h2>
-<p>Join thousands who passed their AWS Solutions Architect Professional exam with <a href="https://nestedcerts.com">NestedCerts</a>. Start with free practice questions and see why our platform has a 92% pass rate.</p>
-<a href="https://nestedcerts.com/certifications" class="cta">View All Certifications →</a>
+<div class="section" style="text-align:center;">
+<h2>Ready for the Full Question Bank?</h2>
+<p>You've seen 30 questions — there are 700+ more waiting for you on <a href="https://nestedcerts.com">NestedCerts</a>, plus full-length practice exams, performance analytics, and a structured 30-day study plan.</p>
+<a href="https://nestedcerts.com/pricing" class="cta">View Pricing →</a>
+<a href="https://nestedcerts.com/articles/solutions-architect-professional" class="cta cta-secondary">Read SAP-C02 Guide →</a>
 </div>
 
 <div class="footer">
-<p>© 2026 <a href="https://nestedcerts.com">NestedCerts</a> | <a href="https://nestedcerts.com/pricing">Pricing</a> | <a href="https://nestedcerts.com/help">Help</a> | <a href="https://nestedcerts.com/certifications">All Certs</a></p>
+<p>© 2026 <a href="https://nestedcerts.com">NestedCerts</a> | <a href="https://nestedcerts.com/pricing">Pricing</a> | <a href="https://nestedcerts.com/help">Help</a> | <a href="https://nestedcerts.com/certifications">All Certs</a> | <a href="https://nestedcerts.com/faq">FAQ</a></p>
 </div>
+
 </div>
 </body>
 </html>
